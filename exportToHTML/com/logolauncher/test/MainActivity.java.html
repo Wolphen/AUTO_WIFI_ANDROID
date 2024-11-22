@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">logolauncher</span><span class="s2">.</span><span class="s1">test</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">logolauncher</span><span class="s2">.</span><span class="s1">R</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">content</span><span class="s2">.</span><span class="s1">Intent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Bundle</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Handler</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">view</span><span class="s2">.</span><span class="s1">View</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">androidx</span><span class="s2">.</span><span class="s1">appcompat</span><span class="s2">.</span><span class="s1">app</span><span class="s2">.</span><span class="s1">AppCompatActivity</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity </span><span class="s2">{</span>
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">Bundle savedInstanceState</span><span class="s2">) {</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState</span><span class="s2">);</span>
+        <span class="s1">setContentView</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">activity_main</span><span class="s2">);</span>
+
+        <span class="s3">// Enable full-screen immersive mode</span>
+        <span class="s1">hideSystemUI</span><span class="s2">();</span>
+
+        <span class="s3">// Wait for 5 seconds before returning to home</span>
+        <span class="s0">new </span><span class="s1">Handler</span><span class="s2">().</span><span class="s1">postDelayed</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+            <span class="s1">finish</span><span class="s2">(); </span><span class="s3">// Close this activity</span>
+            <span class="s1">Intent intent </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Intent</span><span class="s2">(</span><span class="s1">Intent</span><span class="s2">.</span><span class="s1">ACTION_MAIN</span><span class="s2">);</span>
+            <span class="s1">intent</span><span class="s2">.</span><span class="s1">addCategory</span><span class="s2">(</span><span class="s1">Intent</span><span class="s2">.</span><span class="s1">CATEGORY_HOME</span><span class="s2">);</span>
+            <span class="s1">startActivity</span><span class="s2">(</span><span class="s1">intent</span><span class="s2">); </span><span class="s3">// Go to the home screen</span>
+        <span class="s2">}, </span><span class="s4">5000</span><span class="s2">); </span><span class="s3">// 5000 milliseconds = 5 seconds</span>
+    <span class="s2">}</span>
+
+    <span class="s0">private void </span><span class="s1">hideSystemUI</span><span class="s2">() {</span>
+        <span class="s3">// Enables regular immersive mode.</span>
+        <span class="s1">getWindow</span><span class="s2">().</span><span class="s1">getDecorView</span><span class="s2">().</span><span class="s1">setSystemUiVisibility</span><span class="s2">(</span>
+                <span class="s1">View</span><span class="s2">.</span><span class="s1">SYSTEM_UI_FLAG_LAYOUT_STABLE</span>
+                        <span class="s2">| </span><span class="s1">View</span><span class="s2">.</span><span class="s1">SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION</span>
+                        <span class="s2">| </span><span class="s1">View</span><span class="s2">.</span><span class="s1">SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</span>
+                        <span class="s2">| </span><span class="s1">View</span><span class="s2">.</span><span class="s1">SYSTEM_UI_FLAG_HIDE_NAVIGATION</span>
+                        <span class="s2">| </span><span class="s1">View</span><span class="s2">.</span><span class="s1">SYSTEM_UI_FLAG_FULLSCREEN</span>
+                        <span class="s2">| </span><span class="s1">View</span><span class="s2">.</span><span class="s1">SYSTEM_UI_FLAG_IMMERSIVE_STICKY</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onWindowFocusChanged</span><span class="s2">(</span><span class="s0">boolean </span><span class="s1">hasFocus</span><span class="s2">) {</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">onWindowFocusChanged</span><span class="s2">(</span><span class="s1">hasFocus</span><span class="s2">);</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">hasFocus</span><span class="s2">) {</span>
+            <span class="s1">hideSystemUI</span><span class="s2">(); </span><span class="s3">// Keep the system UI hidden when the activity is in focus</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
