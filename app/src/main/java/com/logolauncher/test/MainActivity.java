@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "WiFiManager";
 
     // Configurer ici votre réseau Wi-Fi par défaut
-    private static final String DEFAULT_SSID = "ONsim,XV2";
-    private static final String DEFAULT_PASSWORD = "onsim121";
+    private static final String DEFAULT_SSID = "SSID_NAME";
+    private static final String DEFAULT_PASSWORD = "SSID_PASSWORD";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
